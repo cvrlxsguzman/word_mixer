@@ -1,0 +1,25 @@
+def word_mixer(words_list):
+    new_words = []
+    words_list = words_list.split()
+    words_list = sorted(words_list)
+    while len(words_list) > 5:
+        new_words.append('\n')
+        new_words.append(words_list.pop(-5))
+        new_words.append(words_list.pop(0))
+        new_words.append(words_list.pop(-1))
+    new_words = ' '.join(new_words)
+    return new_words
+
+
+user_input = input('Enter a saying or a poem: ')
+words_list = user_input.split()
+len_words_list = len(words_list)
+for word in range(0, len_words_list):
+    if len(words_list[word]) <= 3:
+        words_list[word] = words_list[word].lower()
+    elif len(words_list[word]) >= 7:
+        words_list[word] = words_list[word].upper()
+
+words_list = ' '.join(words_list)        
+        
+print(word_mixer(words_list))
